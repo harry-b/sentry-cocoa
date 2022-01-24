@@ -32,7 +32,7 @@ SENTRY_NO_INIT
 /**
  * Message of the event
  */
-@property(nonatomic, copy) NSString *message;
+@property(nonatomic, copy) NSString *_Nullable message;
 
 /**
  * NSDate of when the event occured

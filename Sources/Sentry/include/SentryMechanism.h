@@ -52,12 +52,11 @@ SENTRY_NO_INIT
  */
 @property(nonatomic, copy) NSString *_Nullable helpLink;
 
-
 /**
  * Information from the operating system or runtime on the exception
  * mechanism
  */
-@property(nonatomic, strong) NSDictionary<NSString *, NSString *> *_Nullable meta;
+@property(nonatomic, strong) NSDictionary<NSString *, id> *_Nullable meta;
 
 /**
  * Initialize an SentryMechanism with a type

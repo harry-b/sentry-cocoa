@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
             [SentryLog logWithMessage:error.localizedDescription andLevel:kSentryLogLevelError];
         }
         [SentryLog logWithMessage:[NSString stringWithFormat:@"Sent %lu crash report(s)", (unsigned long)filteredReports.count] andLevel:kSentryLogLevelDebug];
-        if (completed && onCompletion) {
+        if (onCompletion) {
             onCompletion(filteredReports, completed, error);
         }
     }];

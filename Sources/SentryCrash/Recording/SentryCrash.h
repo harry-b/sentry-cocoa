@@ -213,6 +213,11 @@ typedef enum
  */
 + (SentryCrash*) sharedInstance;
 
+/// Creates special shared instance. We need run this before using `sharedInstant`, else this method will not work.
+/// @param appName Name, which used for naming crash reports
+/// @param basePath Path, where will be store crash reports
++ (void) createSharedInstanceWithAppName:(NSString *)appName basePath:(NSString *)basePath;
+
 /** Install the crash reporter.
  * The reporter will record crashes, but will not send any crash reports unless
  * sink is set.

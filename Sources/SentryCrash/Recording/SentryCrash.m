@@ -117,15 +117,24 @@ static NSString* getBasePath()
 #pragma mark - Lifecycle -
 // ============================================================================
 
+static SentryCrash *sharedInstance = nil;
+static dispatch_once_t sharedInstanceOnceToken;
+
 + (instancetype) sharedInstance
 {
-    static SentryCrash *sharedInstance = nil;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
+    dispatch_once(&sharedInstanceOnceToken, ^{
         sharedInstance = [[SentryCrash alloc] init];
     });
     return sharedInstance;
+}
+
++ (void) createSharedInstanceWithAppName:(NSString *)appName basePath:(NSString *)basePath
+{
+
+    dispatch_once(&sharedInstanceOnceToken, ^{
+        sharedInstance = [[SentryCrash alloc] initWithBasePath:basePath];
+        sharedInstance.bundleName = appName;
+    });
 }
 
 - (id) init
